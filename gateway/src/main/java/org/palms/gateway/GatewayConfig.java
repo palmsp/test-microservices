@@ -5,14 +5,14 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class GatewayConfig {
 
-    @Bean
+   // @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("first", r -> r.path("/first/**")
-                        .uri("http://localhost:8081/"))
+                        .uri("lb://my-load-balanced-service"))
 
                 .route("second", r -> r.path("/second/**")
                         .uri("http://localhost:8082/"))
